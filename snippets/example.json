@@ -1,0 +1,10 @@
+{
+  "example_snip": {
+    "prefix": "snip",
+    "body": ["snippet ${1:trigger} ${2:scope}", "\t${3:code}", "$0"]
+  },
+  "example_snip2": {
+    "prefix": "snip2",
+    "body": ["snippet ${1:trigger} ${2:scope}", "\t${3:code}", "$0"]
+  }
+}
