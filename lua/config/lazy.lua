@@ -10,6 +10,10 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+    -- vscode support
+    { import = "lazyvim.plugins.extras.vscode" },
+
     -- import any extras modules here
 
     -- languages supported by LazyVim
