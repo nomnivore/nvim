@@ -1,7 +1,7 @@
 return {
-  "goolord/alpha-nvim",
-  opts = function()
-    local dashboard = require("alpha.themes.dashboard")
+  "glepnir/dashboard-nvim",
+  optional = true,
+  opts = function(_, opts)
     local logo = [[
 ███╗   ██╗ ██████╗ ███╗   ███╗███╗   ██╗██╗    ██████╗ ███████╗██╗   ██╗
 ████╗  ██║██╔═══██╗████╗ ████║████╗  ██║██║    ██╔══██╗██╔════╝██║   ██║
@@ -10,6 +10,8 @@ return {
 ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║ ╚████║██║    ██████╔╝███████╗ ╚████╔╝ 
 ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝    ╚═════╝ ╚══════╝  ╚═══╝  
 ]]
-    dashboard.section.header.val = vim.split(logo, "\n")
+
+    logo = string.rep("\n", 8) .. logo .. "\n\n"
+    opts.config.header = vim.split(logo, "\n")
   end,
 }
