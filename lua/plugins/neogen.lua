@@ -17,7 +17,7 @@ return {
     {
       "<leader>cg",
       function()
-        require("neogen").generate()
+        require("neogen").generate({})
       end,
       desc = "Generate annotation comments",
     },
