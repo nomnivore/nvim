@@ -10,8 +10,8 @@ if Util.has("copilot.lua") then
   end, { desc = "Copilot Panel" })
 end
 
--- shift+enter don't trigger completion
-vim.keymap.set("i", "<S-CR>", "<CR>", { expr = true, noremap = true })
+-- shift+enter to newline below without breaking the current line
+vim.api.nvim_set_keymap("i", "<S-CR>", "<C-o>o", { expr = true, noremap = true, desc = "Move to new line below" })
 
 -- override default keymaps for smarter behaviors
 -- FIXME: this doesn't work
