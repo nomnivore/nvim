@@ -63,4 +63,11 @@ require("lazy").setup({
       },
     },
   },
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  dev = {
+    path = "~/code/nvim-lua",
+    ---@type string[]
+    patterns = { "lua" },
+    fallback = true, -- fallback to git if local plugin not found
+  },
 })
