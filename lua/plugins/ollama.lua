@@ -8,13 +8,41 @@ return {
       {
         "<leader>oo",
         ":<c-u>lua require('ollama').prompt()<cr>",
-        desc = "ollama prompt",
+        desc = "Ollama Prompt",
         mode = { "n", "v" },
       },
       {
         "<leader>om",
         "<cmd>OllamaModel<cr>",
         desc = "Ollama Model",
+      },
+      {
+        "<leader>os",
+        "<cmd>OllamaServe<cr>",
+        desc = "Ollama Serve",
+      },
+      {
+        "<leader>oS",
+        "<cmd>OllamaServeStop<cr>",
+        desc = "Ollama Serve Stop",
+      },
+      {
+        "<leader>oM",
+        ":Ollama Modify_Code<cr>",
+        desc = "Modify Code",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>oG",
+        ":lua require('ollama').prompt('Generate_Code')<cr>",
+        desc = "Generate Code",
+      },
+      {
+        "<leader>oq",
+        function()
+          require("ollama").cancel_all_jobs()
+        end,
+        desc = "Cancel All Jobs",
       },
     },
 
@@ -26,23 +54,78 @@ return {
         return
       end
 
-      for _, val in pairs(config.prompts) do
-        if val and val.action == "replace" then
-          val.action = "display_replace"
-        elseif val and val.action == "insert" then
-          val.action = "display_insert"
+      local stream_all = false
+
+      if stream_all then
+        for _, val in pairs(config.prompts) do
+          if val and val.action == "replace" then
+            val.action = "display_replace"
+          elseif val and val.action == "insert" then
+            val.action = "display_insert"
+          end
         end
       end
     end,
 
     ---@type Ollama.Config
     opts = {
+      -- docker run -d --rm --gpus=all -v <models folder>:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+      model = "codellama:latest",
+      serve = {
+        command = "docker",
+        args = {
+          "run",
+          "-d",
+          "--rm",
+          "--gpus=all",
+          "-v",
+          "ollama:/root/.ollama",
+          "-p",
+          "11434:11434",
+          "--name",
+          "ollama",
+          "ollama/ollama",
+        },
+        stop_command = "docker",
+        stop_args = { "stop", "ollama" },
+      },
+      ---@type Ollama.Prompt[]
       prompts = {
-        -- Raw = false,
-        -- Ask_About_Code = false,
-        ---@diagnostic disable-next-line: missing-fields
-        Modify_Code = {
-          action = "display_replace",
+        -- prompts for testing functionality
+        ---@type Ollama.Prompt
+        Test_Stream = {
+          prompt = "Write me an interesting story about a programmer who couldn't fix their software's bugs.",
+          action = "display",
+          options = {
+            seed = 123456,
+          },
+        },
+
+        ---@type Ollama.Prompt
+        Mario = {
+          prompt = "$input",
+          input_label = "🍄",
+          system = "You are Super Mario, the helpful AI assistant. Answer all questions as if you were Super Mario, along with a related anecdote from your adventures.",
+        },
+        Json_Api = {
+          prompt = "$input",
+          system = "You are a RESTful API. The user is sending a request to you, and you must respond with a JSON object.",
+          format = "json",
+        },
+
+        ---@type Ollama.Prompt
+        Generate_Code_At_Line = {
+          system = [[ You are a pair programming AI assistant. The human has written a file, and needs you to write a snippet code for a specific task or purpose.
+          Your code will be inserted at the line number specified.
+          Respond only with the code you would write, not the entire file. Do not include extra explanations, and do not repeat the code the human has already written.
+          ]],
+          prompt = "Here is what I need: $input\n Here is the code I have written so far:\n```$ftype\n$buf\n```\nYour code will be inserted at line $lnum. Please format your response like this: \n```$ftype\n<your code here>\n```\n",
+          action = "display_insert",
+          extract = false,
+        },
+
+        Repeat_Word = {
+          prompt = "Repeat this word back to me: $sel",
         },
       },
     },

@@ -61,7 +61,7 @@ return {
 
       -- upon opening buffer, close these fold kinds
       -- `:UfoInspect` to get available fold kinds from LSP
-      close_fold_kinds = { "imports" },
+      -- close_fold_kinds = { "imports" },
       open_fold_h1_timeout = 500,
       fold_virt_text_handler = foldTextFormatter,
     },
