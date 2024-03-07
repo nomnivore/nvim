@@ -10,6 +10,11 @@ if Util.has("copilot.lua") then
   end, { desc = "Copilot Panel" })
 end
 
+-- keybind to save current file
+vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>w<CR>", { noremap = true, desc = "Save current file" })
+-- all files
+vim.api.nvim_set_keymap("n", "<leader>fa", "<cmd>wall<CR>", { noremap = true, desc = "Save all files" })
+
 -- shift+enter to newline below without breaking the current line
 vim.api.nvim_set_keymap("i", "<S-CR>", "<C-o>o", { expr = true, noremap = true, desc = "Move to new line below" })
 

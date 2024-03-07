@@ -1,10 +1,23 @@
 return {
   {
-    -- "lua/ollama", -- for local dev
-    "nomnivore/ollama.nvim", -- for release
+    "lua/ollama", -- for local dev
+    -- "nomnivore/ollama.nvim", -- for release
     cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
 
     keys = {
+      {
+        -- testing chat
+        "<leader>oc",
+        "<cmd>OllamaChat<cr>",
+        desc = "OllamaChat",
+      },
+      {
+        "<leader>oC",
+        function()
+          require("ollama.chat").close()
+        end,
+        desc = "OllamaChat Close",
+      },
       {
         "<leader>oo",
         ":<c-u>lua require('ollama').prompt()<cr>",
@@ -54,7 +67,7 @@ return {
         return
       end
 
-      local stream_all = false
+      local stream_all = true
 
       if stream_all then
         for _, val in pairs(config.prompts) do
@@ -65,11 +78,34 @@ return {
           end
         end
       end
+
+      local win_type = "float"
+
+      for _, val in pairs(config.prompts) do
+        if val and val.action == "display" then
+          val.action =
+            require("ollama.actions.factory").create_action({ display = true, show_prompt = true, window = win_type })
+        elseif val and val.action == "display_replace" then
+          val.action = require("ollama.actions.factory").create_action({
+            display = true,
+            show_prompt = true,
+            window = win_type,
+            replace = true,
+          })
+        elseif val and val.action == "display_insert" then
+          val.action = require("ollama.actions.factory").create_action({
+            display = true,
+            show_prompt = true,
+            window = win_type,
+            insert = true,
+          })
+        end
+      end
     end,
 
     ---@type Ollama.Config
     opts = {
-      -- docker run -d --rm --gpus=all -v <models folder>:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+      -- docker run -d --rm --gpus=all -v <volume>:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
       model = "codellama:latest",
       serve = {
         command = "docker",
@@ -101,16 +137,14 @@ return {
           },
         },
 
-        ---@type Ollama.Prompt
-        Mario = {
-          prompt = "$input",
-          input_label = "🍄",
-          system = "You are Super Mario, the helpful AI assistant. Answer all questions as if you were Super Mario, along with a related anecdote from your adventures.",
-        },
         Json_Api = {
           prompt = "$input",
           system = "You are a RESTful API. The user is sending a request to you, and you must respond with a JSON object.",
           format = "json",
+        },
+        ---@type Ollama.Prompt
+        Ask_About_Code = {
+          action = "display",
         },
 
         ---@type Ollama.Prompt
@@ -121,7 +155,6 @@ return {
           ]],
           prompt = "Here is what I need: $input\n Here is the code I have written so far:\n```$ftype\n$buf\n```\nYour code will be inserted at line $lnum. Please format your response like this: \n```$ftype\n<your code here>\n```\n",
           action = "display_insert",
-          extract = false,
         },
 
         Repeat_Word = {
