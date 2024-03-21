@@ -1,3 +1,7 @@
+-- TODO: disabled to test harpoon 2
+if true then
+  return {}
+end
 return {
   {
     "ThePrimeagen/harpoon",

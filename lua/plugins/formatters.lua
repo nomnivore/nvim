@@ -11,23 +11,26 @@ return {
         end
       end
 
-      -- add ft formatters for biome
-      local biome_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" }
-      for _, ft in ipairs(biome_ft) do
-        if opts.formatters_by_ft[ft] == nil then
-          opts.formatters_by_ft[ft] = { { "biome" } }
-        else
-          opts.formatters_by_ft[ft][1] = opts.formatters_by_ft[ft][1] or {}
-          table.insert(opts.formatters_by_ft[ft][1], 1, "biome")
-        end
-      end
+      -- FIXME: something broke the 'ctx' bit at the bottom
+      -- just don't bother with biome for now
 
-      ---@diagnostic disable-next-line: inject-field
-      opts.formatters.biome = {
-        condition = function(ctx)
-          return vim.fn.findfile("biome.json", ctx.dirname .. ";") ~= ""
-        end,
-      }
+      -- add ft formatters for biome
+      -- local biome_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" }
+      -- for _, ft in ipairs(biome_ft) do
+      --   if opts.formatters_by_ft[ft] == nil then
+      --     opts.formatters_by_ft[ft] = { { "biome" } }
+      --   else
+      --     opts.formatters_by_ft[ft][1] = opts.formatters_by_ft[ft][1] or {}
+      --     table.insert(opts.formatters_by_ft[ft][1], 1, "biome")
+      --   end
+      -- end
+      --
+      -- ---@diagnostic disable-next-line: inject-field
+      -- opts.formatters.biome = {
+      --   condition = function(ctx)
+      --     return vim.fn.findfile("biome.json", ctx.cwd() .. ";") ~= ""
+      --   end,
+      -- }
     end,
   },
 }

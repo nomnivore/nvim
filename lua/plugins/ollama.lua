@@ -1,7 +1,7 @@
 return {
   {
-    "lua/ollama", -- for local dev
-    -- "nomnivore/ollama.nvim", -- for release
+    -- "lua/ollama", -- for local dev
+    "nomnivore/ollama.nvim", -- for release
     cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
 
     keys = {

@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   "neovim/nvim-lspconfig",
   ---@class PluginLspOpts
@@ -31,6 +32,19 @@ return {
         -- ideally i don't want to disable this
         -- but it basically negates the root_dir specificity
         single_file_support = false,
+      },
+      gleam = {},
+      slint_lsp = {
+        root_dir = function(fname)
+          local root_file = {
+            "Cargo.toml",
+            "package.json",
+          }
+
+          -- return roo_pattern of root_file OR git ancestor
+          return require("lspconfig.util").root_pattern(unpack(root_file))(fname)
+            or require("lspconfig.util").find_git_ancestor(fname)
+        end,
       },
     },
   },

@@ -25,3 +25,9 @@ vim.api.nvim_create_autocmd("ModeChanged", {
   end,
   desc = "Exit Snippets on Mode Change",
 })
+
+-- support 'slint' filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.slint" },
+  command = "set filetype=slint",
+})
