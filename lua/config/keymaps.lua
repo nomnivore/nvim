@@ -38,9 +38,3 @@ vim.api.nvim_set_keymap("i", "<S-CR>", "<C-o>o", { expr = true, noremap = true, 
 --     return "dd"
 --   end
 -- end, { desc = "Delete Line" })
-
--- support for tmux pane navigation
-vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Move to the left window" })
-vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Move to the right window" })
-vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Move to the lower window" })
-vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Move to the upper window" })

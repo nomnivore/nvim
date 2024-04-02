@@ -92,7 +92,6 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "066922699bdf1c6e14d517b844454b12b93ce25a" },
   "vim-illuminate": { "branch": "master", "commit": "305bf07b919ac526deb5193280379e2f8b599926" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
-  "vim-tmux-navigator": { "branch": "master", "commit": "38b1d0402c4600543281dc85b3f51884205674b6" },
   "vim-uppercase-sql": { "branch": "master", "commit": "58bfde1d679a1387dabfe292b38d51d84819b267" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "yanky.nvim": { "branch": "main", "commit": "7c5cbf0122ff2dfbb6a92f14885894f65949cc8b" },
