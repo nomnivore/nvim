@@ -1,3 +1,4 @@
+-- plugins to make working with SQL databases easier
 return {
   {
     "kristijanhusak/vim-dadbod-ui",

@@ -32,13 +32,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
-
-    -- new stuff
-    -- FIXME: super broken on my setup for some reason
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
+    -- new stuff
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
 
     -- import/override with your plugins

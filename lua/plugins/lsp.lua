@@ -33,7 +33,6 @@ return {
         -- but it basically negates the root_dir specificity
         single_file_support = false,
       },
-      gleam = {},
       slint_lsp = {
         root_dir = function(fname)
           local root_file = {

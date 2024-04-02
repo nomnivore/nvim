@@ -1,3 +1,4 @@
+-- visual changes for LSP hover and documentation popups
 return {
   "folke/noice.nvim",
   ---@type NoiceConfig

@@ -1,5 +1,5 @@
 local leet_arg = "leetcode.nvim"
-
+-- only loaded if the leet_arg is provided at the start command
 return {
   "kawre/leetcode.nvim",
   -- https://github.com/kawre/leetcode.nvim#lazy-loading

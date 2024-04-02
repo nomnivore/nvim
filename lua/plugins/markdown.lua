@@ -1,11 +1,6 @@
 return {
   -- using the lazyvim.extra for markdown
 
-  -- ISSUE: headlines cuases visual issues with tmux
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   enabled = false,
-  -- },
   {
     "ellisonleao/glow.nvim",
     cmd = "Glow",

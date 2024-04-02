@@ -8,20 +8,6 @@ return {
     opts = function(_, opts)
       opts.adapters["neotest-jest"] = {}
       opts.adapters["neotest-vitest"] = {}
-
-      -- opts.icons = {
-      --   expanded = "",
-      --   child_prefix = "",
-      --   child_indent = "",
-      --   final_child_prefix = "",
-      --   non_collapsible = "",
-      --   collapsed = "",
-      --
-      --   passed = "",
-      --   running = "",
-      --   failed = "",
-      --   unknown = "",
-      -- }
     end,
   },
 }
