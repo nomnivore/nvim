@@ -1,3 +1,7 @@
+if true then
+  return {}
+end -- temporary disable
+
 local foldIcon = ""
 local hlgroup = "NonText"
 
