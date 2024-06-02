@@ -26,6 +26,10 @@ return {
       keywordStyle = { italic = false },
     },
   },
+  {
+    "folke/tokyonight.nvim",
+    name = "tokyonight",
+  },
   -- Configure LazyVim to load catppuccin
   {
     "LazyVim/LazyVim",

@@ -1,3 +1,4 @@
+-- plugins from the 'mini' suite
 return {
   {
     "echasnovski/mini.splitjoin",
@@ -8,17 +9,6 @@ return {
     config = function(_, opts)
       require("mini.splitjoin").setup(opts)
     end,
-
-    -- keys = {
-    --   {
-    --     "gS",
-    --     function()
-    --       require("mini.splitjoin").toggle()
-    --     end,
-    --     mode = { "n", "v" },
-    --     desc = "Toggle Arguments",
-    --   },
-    -- },
   },
   {
     "echasnovski/mini.hipatterns",

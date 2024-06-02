@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    optional = true,
+    optional = true, -- plugin is managed by LazyVim
     ---@param opts ConformOpts
     opts = function(_, opts)
       -- extend the 'prettier' extra to prefer 'prettierd'
