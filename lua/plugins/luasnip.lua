@@ -28,6 +28,9 @@ return {
         if vim.fn.filereadable(custom_snippets .. folderSep .. "package.json") then
           require("luasnip.loaders.from_vscode").lazy_load({ paths = { custom_snippets } })
         end
+
+        -- load snipmate snippets from same folder
+        require("luasnip.loaders.from_snipmate").lazy_load({ paths = { custom_snippets } })
       end
     end,
 

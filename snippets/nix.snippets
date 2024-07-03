@@ -1,0 +1,40 @@
+snippet devflake devshell flake.nix
+  # .envrc: use flake
+  {
+    description = "${1:DevShell flake}";
+
+    inputs = {
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-${2:unstable}";
+      flake-utils.url = "github:numtide/flake-utils";
+    };
+
+    outputs =
+      {
+        self,
+        nixpkgs,
+        flake-utils,
+      }:
+      flake-utils.lib.eachDefaultSystem (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          devShell = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              $0
+            ];
+          };
+        }
+      );
+  }
+
+snippet devshell devshell shell.nix
+  # .envrc: use nix
+  { pkgs ? import <nixpkgs> {} }:
+
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      $0
+    ];
+  }
