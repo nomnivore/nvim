@@ -163,15 +163,15 @@ return {
       },
     },
   },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        ["<leader>o"] = { name = "+ollama" },
-      },
-    },
-  },
+  -- {
+  --   "folke/which-key.nvim",
+  --   optional = true,
+  --   opts = {
+  --     defaults = {
+  --       ["<leader>o"] = { name = "+ollama" },
+  --     },
+  --   },
+  -- },
 
   {
     "nvim-lualine/lualine.nvim",

@@ -7,7 +7,7 @@ return {
       -- extend the 'prettier' extra to prefer 'prettierd'
       for key, val in pairs(opts.formatters_by_ft) do
         if type(val) == "table" and val[1] == "prettier" then
-          opts.formatters_by_ft[key][1] = { "prettierd", "prettier" }
+          opts.formatters_by_ft[key] = { "prettierd", "prettier", stop_after_first = true }
         end
       end
 

@@ -9,7 +9,7 @@ return {
     event = "InsertEnter",
 
     opts = {
-      mapping = { "jk" },
+      default_mappings = true,
     },
   },
   {

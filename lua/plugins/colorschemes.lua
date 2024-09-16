@@ -29,6 +29,7 @@ return {
   {
     "folke/tokyonight.nvim",
     name = "tokyonight",
+    event = "VeryLazy",
   },
   -- Configure LazyVim to load catppuccin
   {
