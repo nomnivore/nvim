@@ -8,7 +8,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     optional = true,
-
     opts = function(_, opts)
       if is_windows() then
         opts.servers.nil_ls = nil

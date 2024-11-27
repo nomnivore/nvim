@@ -77,11 +77,6 @@ return {
       -- necessary to not conflict with auto formatting
       noautocmd = true,
       debounce_delay = 2000, -- ms
-
-      execution_message = {
-        enabled = false,
-        -- if the functionality is good, maybe integrate it with lualine?
-      },
     },
   },
 }
