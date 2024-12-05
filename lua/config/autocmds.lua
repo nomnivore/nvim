@@ -31,3 +31,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.slint" },
   command = "set filetype=slint",
 })
+
+-- disable lsp diagnostics for markdown files by default
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.md",
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})

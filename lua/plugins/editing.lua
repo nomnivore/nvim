@@ -10,6 +10,12 @@ return {
 
     opts = {
       default_mappings = true,
+
+      -- disable for visual/select modes
+      mappings = {
+        s = false,
+        v = false,
+      },
     },
   },
   {
