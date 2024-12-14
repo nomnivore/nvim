@@ -13,8 +13,21 @@ return {
 
       -- disable for visual/select modes
       mappings = {
-        s = false,
-        v = false,
+        s = {
+          j = {
+            k = false,
+          },
+        },
+        v = {
+          j = {
+            k = false,
+          },
+        },
+        t = {
+          j = {
+            k = false,
+          },
+        },
       },
     },
   },
