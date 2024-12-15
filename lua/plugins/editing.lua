@@ -98,4 +98,29 @@ return {
       debounce_delay = 2000, -- ms
     },
   },
+
+  {
+    -- make super-tab keybinds work well with the rest of lazyvim
+    "saghen/blink.cmp",
+    optional = true,
+    opts = function(_, opts)
+      opts.keymap = {
+        preset = "super-tab",
+        ["<C-y>"] = { "select_and_accept" },
+        ["<Tab>"] = {
+          -- merge of default super-tab <Tab> binding and lazyvim config: https://www.lazyvim.org/extras/coding/blink#blinkcmp
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }), -- untested.
+          "fallback",
+        },
+      }
+    end,
+  },
 }
