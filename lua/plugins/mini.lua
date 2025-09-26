@@ -1,7 +1,7 @@
 -- plugins from the 'mini' suite
 return {
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     name = "mini.splitjoin",
     version = false,
     event = "LazyFile",
@@ -11,7 +11,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     version = false,
     optional = true,
     keys = {
