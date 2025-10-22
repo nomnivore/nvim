@@ -1,8 +1,8 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.ai.sidekick",
+    "lazyvim.plugins.extras.ai.supermaven",
     "lazyvim.plugins.extras.lang.nix",
-    "lazyvim.plugins.extras.lang.omnisharp",
     "lazyvim.plugins.extras.lang.toml"
   ],
   "install_version": 7,
